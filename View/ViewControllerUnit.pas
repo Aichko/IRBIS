@@ -1,28 +1,31 @@
 unit ViewControllerUnit;
-
+
 interface
 
 uses
+  Windows1Unit,
   PanelsUnit,
   Vcl.Forms,
   ButtonsUnit,
   InvironmentInterfaceUnit,
   ViewControllerInterfaceUnit,
   ModelControllerInterfaceUnit {ModelControllerInterface};
+
 type
   ViewController = Class(TInterfacedObject, ViewControllerInterface)
   private
     /// <link>aggregation</link>
     Invironment: InvironmentInterface;
-    AOwner:TForm;
+    AOwner: TForm;
     /// <link>aggregation</link>
     ModuleController: ModelControllerInterface;
     procedure DestroyInvironment;
   public
-    procedure CreateButton;
-    Procedure CreatePanel;
+    // procedure CreateButton;
+    // Procedure CreatePanel;
     constructor create(AOwner: TForm);
-    Function GetForm:TForm;
+    Procedure CreateWindows1;
+    Function GetForm: TForm;
   End;
 
 implementation
@@ -31,20 +34,28 @@ implementation
 
 constructor ViewController.create(AOwner: TForm);
 begin
-  Self.AOwner:=AOwner;
-  CreateButton;
+  Self.AOwner := AOwner;
+  CreateWindows1;
+  // CreateButton;
 end;
 
-procedure ViewController.CreateButton;
-begin
+{ procedure ViewController.CreateButton;
+  begin
   DestroyInvironment;
   Invironment := Buttons.create(Self);
-end;
+  end;
 
-procedure ViewController.CreatePanel;
-begin
+  procedure ViewController.CreatePanel;
+  begin
   DestroyInvironment;
   Invironment := Panels.create(Self);
+  end; }
+
+procedure ViewController.CreateWindows1;
+begin
+  if assigned(Invironment) then
+    Invironment.Destroy;
+  Invironment := Windows1.create(Self);
 end;
 
 procedure ViewController.DestroyInvironment;
@@ -55,7 +66,8 @@ end;
 
 function ViewController.GetForm: TForm;
 begin
-  Result:=AOwner;
+  Result := AOwner;
 end;
 
 end.
+

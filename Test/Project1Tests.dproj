@@ -83,14 +83,24 @@
 			</DelphiCompile>
 			<DCCReference Include="TestGeneralUnit.pas"/>
 			<DCCReference Include="..\src\regexpr.pas"/>
-			<DCCReference Include="..\Model\FailedRequestUnit.pas"/>
-			<DCCReference Include="..\Model\GeneralInterfaceUnit.pas"/>
-			<DCCReference Include="..\Model\GeneralUnit.pas"/>
-			<DCCReference Include="..\Model\ModelControllerInterfaceUnit.pas"/>
-			<DCCReference Include="..\Model\ModelControllerUnit.pas"/>
-			<DCCReference Include="..\Model\ReadInterfaceUnit.pas"/>
-			<DCCReference Include="..\Model\TotalRequestsUnit.pas"/>
-			<DCCReference Include="..\Model\ValidRequestsUnit.pas"/>
+			<DCCReference Include="..\Model\General\BandWidthUnit.pas"/>
+			<DCCReference Include="..\Model\General\ExcludedHitsUnit.pas"/>
+			<DCCReference Include="..\Model\General\FailedRequestUnit.pas"/>
+			<DCCReference Include="..\Model\General\GeneralInterfaceUnit.pas"/>
+			<DCCReference Include="..\Model\General\GeneralUnit.pas"/>
+			<DCCReference Include="..\Model\General\GenerationTimeUnit.pas"/>
+			<DCCReference Include="..\Model\General\LogSizeUnit.pas"/>
+			<DCCReference Include="..\Model\General\ModelControllerInterfaceUnit.pas"/>
+			<DCCReference Include="..\Model\General\ModelControllerUnit.pas"/>
+			<DCCReference Include="..\Model\General\ReadInterfaceUnit.pas"/>
+			<DCCReference Include="..\Model\General\TotalRequestsUnit.pas"/>
+			<DCCReference Include="..\Model\General\UniqueFilesUnit.pas"/>
+			<DCCReference Include="..\Model\General\UniqueNotFoundUnit.pas"/>
+			<DCCReference Include="..\Model\General\UniqueRefferersUnit.pas"/>
+			<DCCReference Include="..\Model\General\UniqueStaticFilesUnit.pas"/>
+			<DCCReference Include="..\Model\General\UniqueVisitorsUnit.pas"/>
+			<DCCReference Include="..\Model\General\ValidRequestsUnit.pas"/>
+			<DCCReference Include="..\Model\Windows1Unit.pas"/>
 			<None Include="ModelSupport_Project1Tests\default.txaPackage"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>

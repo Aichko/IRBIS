@@ -43,7 +43,7 @@ end;
 
 procedure Panels.PanelOnClick(Sender: TObject);
 begin
- AOwner.CreateButton;
+ //AOwner.CreateButton;
 end;
 
 end.

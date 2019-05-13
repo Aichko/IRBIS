@@ -86,29 +86,30 @@
 				<Form>Form1</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
-			<DCCReference Include="Model\ModelControllerInterfaceUnit.pas"/>
-			<DCCReference Include="Model\ModelControllerUnit.pas"/>
 			<DCCReference Include="View\ButtonsUnit.pas"/>
 			<DCCReference Include="View\InvironmentInterfaceUnit.pas"/>
 			<DCCReference Include="View\PanelsUnit.pas"/>
 			<DCCReference Include="View\ViewControllerInterfaceUnit.pas"/>
 			<DCCReference Include="View\ViewControllerUnit.pas"/>
-			<DCCReference Include="Model\GeneralInterfaceUnit.pas"/>
-			<DCCReference Include="Model\GeneralUnit.pas"/>
 			<DCCReference Include="src\regexpr.pas"/>
-			<DCCReference Include="Model\TotalRequestsUnit.pas"/>
-			<DCCReference Include="Model\ReadInterfaceUnit.pas"/>
-			<DCCReference Include="Model\ValidRequestsUnit.pas"/>
-			<DCCReference Include="Model\FailedRequestUnit.pas"/>
-			<DCCReference Include="Model\GenerationTimeUnit.pas"/>
-			<DCCReference Include="Model\UniqueVisitorsUnit.pas"/>
-			<DCCReference Include="Model\UniqueFilesUnit.pas"/>
-			<DCCReference Include="Model\ExcludedHitsUnit.pas"/>
-			<DCCReference Include="Model\UniqueRefferersUnit.pas"/>
-			<DCCReference Include="Model\UniqueNotFoundUnit.pas"/>
-			<DCCReference Include="Model\UniqueStaticFilesUnit.pas"/>
-			<DCCReference Include="Model\LogSizeUnit.pas"/>
-			<DCCReference Include="Model\BandWidthUnit.pas"/>
+			<DCCReference Include="Model\General\BandWidthUnit.pas"/>
+			<DCCReference Include="Model\General\ExcludedHitsUnit.pas"/>
+			<DCCReference Include="Model\General\FailedRequestUnit.pas"/>
+			<DCCReference Include="Model\General\GeneralInterfaceUnit.pas"/>
+			<DCCReference Include="Model\General\GeneralUnit.pas"/>
+			<DCCReference Include="Model\General\GenerationTimeUnit.pas"/>
+			<DCCReference Include="Model\General\LogSizeUnit.pas"/>
+			<DCCReference Include="Model\General\ModelControllerInterfaceUnit.pas"/>
+			<DCCReference Include="Model\General\ModelControllerUnit.pas"/>
+			<DCCReference Include="Model\General\ReadInterfaceUnit.pas"/>
+			<DCCReference Include="Model\General\TotalRequestsUnit.pas"/>
+			<DCCReference Include="Model\General\UniqueFilesUnit.pas"/>
+			<DCCReference Include="Model\General\UniqueNotFoundUnit.pas"/>
+			<DCCReference Include="Model\General\UniqueRefferersUnit.pas"/>
+			<DCCReference Include="Model\General\UniqueStaticFilesUnit.pas"/>
+			<DCCReference Include="Model\General\UniqueVisitorsUnit.pas"/>
+			<DCCReference Include="Model\General\ValidRequestsUnit.pas"/>
+			<DCCReference Include="View\Windows1\Windows1Unit.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>

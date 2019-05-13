@@ -7,8 +7,7 @@ Uses
 
 type
   ViewControllerInterface = interface
-    procedure CreateButton;
-    Procedure CreatePanel;
+    Procedure CreateWindows1;
     Function GetForm:TForm;
   end;
 
