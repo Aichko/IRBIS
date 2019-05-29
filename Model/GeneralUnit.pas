@@ -5,27 +5,22 @@ interface
 uses
   System.Generics.Collections {TDictionary} ,
   ReadInterfaceUnit {ReadInterface} ,
-  RegExpr {TRegExpr} ,
+  //RegExpr {TRegExpr} ,
   SysUtils {Date} ,
   GeneralInterfaceUnit {GeneralInterface};
 
 type
   General = class(TInterfacedObject, GeneralInterface)
   private
-    OverallAnalyzedRequests: TDictionary<string, integer>;
-    RegExp: TRegExpr;
-    Log: TextFile;
+    //RegExp: TRegExpr;
+   //
     reader: TList<ReadInterface>;
-    return: TDictionary<string, integer>;
     StartDate: TDateTime;
     EndDate: TDateTime;
-
     LogPath: string;
-
   public
-    function getOverallAnalyzedRequests: TDictionary<string, integer>;
+    function getAnalyzedRequests: TList<ReadInterface>;
     procedure Read;
-
     constructor Create(LogPath: string; StartDate, EndDate: TDateTime;
       reader: TList<ReadInterface>);
   end;
@@ -42,21 +37,20 @@ begin
   Self.EndDate := EndDate;
   Self.reader := TList<ReadInterface>.Create;
   Self.reader := reader;
-  Self.return := TDictionary<string, integer>.Create;
 end;
 
-function General.getOverallAnalyzedRequests: TDictionary<string, integer>;
+function General.getAnalyzedRequests: TList<ReadInterface>;
 begin
-  result:= TDictionary<string, integer>.create;
-  result:=return;
+  result := TList<ReadInterface>.Create;
+  result := reader;
 end;
-
 
 procedure General.Read;
 var
   text: string;
   key: string;
   value: ReadInterface;
+  Log: TextFile;
 begin
   AssignFile(Log, LogPath);
   Reset(Log);
@@ -66,7 +60,6 @@ begin
     begin
       readln(Log, text);
       value.Read(text);
-      return.Add(value.GetName, value.return);
     end;
   end;
   CloseFile(Log);

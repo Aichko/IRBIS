@@ -1,28 +1,31 @@
 unit ViewControllerUnit;
-
+
 interface
 
 uses
-  PanelsUnit,
+  GeneralWindowsUnit,
+  System.Generics.Collections {TDictionary} ,
+  ReadInterfaceUnit,
+  SysUtils,
   Vcl.Forms,
-  ButtonsUnit,
-  InvironmentInterfaceUnit,
+  GeneralUnit,
+  WindowsInterfaceUnit,
   ViewControllerInterfaceUnit,
+  ModelControllerUnit {ModelControllerUnit} ,
   ModelControllerInterfaceUnit {ModelControllerInterface};
+
 type
   ViewController = Class(TInterfacedObject, ViewControllerInterface)
   private
     /// <link>aggregation</link>
-    Invironment: InvironmentInterface;
-    AOwner:TForm;
+    Windows1: WindowsInterface;
+    AOwner: TForm;
     /// <link>aggregation</link>
     ModuleController: ModelControllerInterface;
     procedure DestroyInvironment;
   public
-    procedure CreateButton;
-    Procedure CreatePanel;
     constructor create(AOwner: TForm);
-    Function GetForm:TForm;
+    Function GetForm: TForm;
   End;
 
 implementation
@@ -30,32 +33,28 @@ implementation
 { ViewController }
 
 constructor ViewController.create(AOwner: TForm);
+var
+  List: ReadInterface;
 begin
-  Self.AOwner:=AOwner;
-  CreateButton;
-end;
+  Self.AOwner := AOwner;
+  ModuleController := ModelController.create;
 
-procedure ViewController.CreateButton;
-begin
-  DestroyInvironment;
-  Invironment := Buttons.create(Self);
-end;
-
-procedure ViewController.CreatePanel;
-begin
-  DestroyInvironment;
-  Invironment := Panels.create(Self);
+  Windows1:= GeneralWindows.create(AOwner);
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'TotalRequest' then
+      AOwner.Caption := IntToStr(List.return);
 end;
 
 procedure ViewController.DestroyInvironment;
 begin
-  if assigned(Invironment) then
-    Invironment.Destroy;
+  if assigned(Windows1) then
+    Windows1.Destroy;
 end;
 
 function ViewController.GetForm: TForm;
 begin
-  Result:=AOwner;
+  Result := AOwner;
 end;
 
 end.
+

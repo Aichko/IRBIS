@@ -5,9 +5,7 @@ uses
   Unit1 in 'Unit1.pas' {Form1},
   ModelControllerInterfaceUnit in 'Model\ModelControllerInterfaceUnit.pas',
   ModelControllerUnit in 'Model\ModelControllerUnit.pas',
-  ButtonsUnit in 'View\ButtonsUnit.pas',
-  InvironmentInterfaceUnit in 'View\InvironmentInterfaceUnit.pas',
-  PanelsUnit in 'View\PanelsUnit.pas',
+  WindowsInterfaceUnit in 'view\WindowsInterfaceUnit.pas',
   ViewControllerInterfaceUnit in 'View\ViewControllerInterfaceUnit.pas',
   ViewControllerUnit in 'View\ViewControllerUnit.pas',
   GeneralInterfaceUnit in 'Model\GeneralInterfaceUnit.pas',
@@ -25,7 +23,8 @@ uses
   UniqueNotFoundUnit in 'Model\UniqueNotFoundUnit.pas',
   UniqueStaticFilesUnit in 'Model\UniqueStaticFilesUnit.pas',
   LogSizeUnit in 'Model\LogSizeUnit.pas',
-  BandWidthUnit in 'Model\BandWidthUnit.pas';
+  BandWidthUnit in 'Model\BandWidthUnit.pas',
+  GeneralWindowsUnit in 'View\GeneralWindowsUnit.pas';
 
 {$R *.res}
 
