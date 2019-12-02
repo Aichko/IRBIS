@@ -9,6 +9,8 @@ uses
 type
   ModelControllerInterface = interface
     function getGeneralAnalyzedRequests:  TList<ReadInterface>;
+    procedure TotalRequestsCreate;
+    procedure AllPdfCreate;
   end;
 
 implementation

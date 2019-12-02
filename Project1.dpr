@@ -24,7 +24,8 @@ uses
   UniqueStaticFilesUnit in 'Model\UniqueStaticFilesUnit.pas',
   LogSizeUnit in 'Model\LogSizeUnit.pas',
   BandWidthUnit in 'Model\BandWidthUnit.pas',
-  GeneralWindowsUnit in 'View\GeneralWindowsUnit.pas';
+  GeneralWindowsUnit in 'View\GeneralWindowsUnit.pas',
+  AllPdfUnit in 'Model\AllPdfUnit.pas';
 
 {$R *.res}
 

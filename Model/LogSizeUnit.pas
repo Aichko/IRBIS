@@ -2,6 +2,7 @@ unit LogSizeUnit;
 
 interface
 uses
+  RegExpr {TRegExpr},
   ReadinterfaceUnit;
 
 type
@@ -26,7 +27,7 @@ end;
 
 procedure LogSize.read(OneLogString: String);
 begin
-
+   { TODO :  }
 end;
 
 function LogSize.return: integer;

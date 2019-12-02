@@ -27,6 +27,14 @@ object Form1: TForm1
         Caption = #1042#1099#1093#1086#1076
         OnClick = N3Click
       end
+      object AllPdf1: TMenuItem
+        Caption = 'All_Pdf'
+        OnClick = AllPdf1Click
+      end
+      object UniqueVisitors1: TMenuItem
+        Caption = 'Unique_Visitors'
+        OnClick = UniqueVisitors1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

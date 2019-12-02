@@ -5,7 +5,9 @@ interface
 uses
   System.Generics.Collections {TDictionary} ,
   TotalRequestsUnit,
+  AllPdfUnit,
   ReadInterfaceUnit,
+  UniqueVisitorsUnit,
   GeneralUnit,
   GeneralInterfaceUnit {GeneralInterface} ,
   ModelControllerInterfaceUnit {ModelControllerInterface};
@@ -18,24 +20,52 @@ type
   private
     /// <link>aggregation</link>
     GeneralInterface1: GeneralInterface;
+    ReadList: TList<ReadInterface>;
   public
     function getGeneralAnalyzedRequests: TList<ReadInterface>;
     constructor create;
+    procedure TotalRequestsCreate;
+    procedure AllPdfCreate;
+    procedure UniqueVisitorsCreate;
   end;
 
 implementation
 
 { ModelController }
 
-constructor ModelController.create;
-var
-  ReadList: TList<ReadInterface>;
+procedure ModelController.AllPdfCreate;
 begin
-  ReadList := TList<ReadInterface>.create;
-  ReadList.Add(TotalRequests.create);
+  ReadList.Add(AllPdf.create);
+
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
   GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
   GeneralInterface1.Read;
+end;
+
+procedure ModelController.TotalRequestsCreate;
+
+begin
+  ReadList.Add(TotalRequests.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+procedure ModelController.UniqueVIsitorsCreate;
+begin
+ReadList.Add(UniqueVisitors.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+constructor ModelController.create;
+
+begin
+  ReadList := TList<ReadInterface>.create;
+
 end;
 
 function ModelController.getGeneralAnalyzedRequests: TList<ReadInterface>;

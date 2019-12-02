@@ -25,13 +25,23 @@ type
     procedure DestroyInvironment;
   public
     function getGeneralAnalyzedRequestsTotalRequest: string;
+    function getGeneralAnalyzedRequestsAllPdf: string;
+    function getGeneralAnalyzedReqestsUniqueVisitors: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
+    procedure TotalRequestsCreate;
+    procedure AllPdfCreate;
+    Procedure UniqueVisitorsCreate;
   End;
 
 implementation
 
 { ViewController }
+
+procedure ViewController.AllPdfCreate;
+begin
+  ModuleController.AllPdfCreate;
+end;
 
 constructor ViewController.create(AOwner: TForm);
 var
@@ -40,10 +50,10 @@ begin
   Self.AOwner := AOwner;
   ModuleController := ModelController.create();
 
-  Windows1:= GeneralWindows.create(AOwner);
-  {for List in ModuleController.getGeneralAnalyzedRequests do
+  Windows1 := GeneralWindows.create(AOwner);
+  { for List in ModuleController.getGeneralAnalyzedRequests do
     if List.GetName = 'TotalRequest' then
-      AOwner.Caption := IntToStr(List.return);   }
+    AOwner.Caption := IntToStr(List.return); }
 end;
 
 procedure ViewController.DestroyInvironment;
@@ -57,14 +67,53 @@ begin
   Result := AOwner;
 end;
 
+function ViewController.getGeneralAnalyzedReqestsUniqueVisitors: string;
+var
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'UniqueVisitors' then
+      Result := IntToStr(List.return);
+end;
+
+function ViewController.getGeneralAnalyzedRequestsAllPdf: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'AllPdf' then
+      Result := IntToStr(List.return);
+
+end;
+
 function ViewController.getGeneralAnalyzedRequestsTotalRequest: string;
-var
-  List: ReadInterface;
-begin
+
+var
+
+  List: ReadInterface;
+
+begin
   Result := '';
   for List in ModuleController.getGeneralAnalyzedRequests do
     if List.GetName = 'TotalRequest' then
       Result := IntToStr(List.return);
+end;
+
+procedure ViewController.TotalRequestsCreate;
+
+begin
+  ModuleController.TotalRequestsCreate;
+end;
+
+procedure ViewController.UniqueVisitorsCreate;
+begin
+  ModuleController.UniqueVisitorsCreate;
 end;
 
 end.
