@@ -12,8 +12,8 @@ uses
   GeneralInterfaceUnit {GeneralInterface} ,
   ModelControllerInterfaceUnit {ModelControllerInterface};
 
-const
-  AccessLog = 'irbislog_copy_01.02.2013.log';
+//const
+  //AccessLog = 'irbislog_copy_01.02.2013.log';
 
 type
   ModelController = class(TInterfacedObject, ModelControllerInterface)
@@ -24,16 +24,16 @@ type
   public
     function getGeneralAnalyzedRequests: TList<ReadInterface>;
     constructor create;
-    procedure TotalRequestsCreate;
-    procedure AllPdfCreate;
-    procedure UniqueVisitorsCreate;
+    procedure TotalRequestsCreate(AccessLog:string);
+    procedure AllPdfCreate(AccessLog:string);
+    procedure UniqueVisitorsCreate(AccessLog:string);
   end;
 
 implementation
 
 { ModelController }
 
-procedure ModelController.AllPdfCreate;
+procedure ModelController.AllPdfCreate(AccessLog:string);
 begin
   ReadList.Add(AllPdf.create);
 
@@ -42,7 +42,7 @@ begin
   GeneralInterface1.Read;
 end;
 
-procedure ModelController.TotalRequestsCreate;
+procedure ModelController.TotalRequestsCreate(AccessLog:string);
 
 begin
   ReadList.Add(TotalRequests.create);
@@ -52,7 +52,7 @@ begin
   GeneralInterface1.Read;
 end;
 
-procedure ModelController.UniqueVIsitorsCreate;
+procedure ModelController.UniqueVIsitorsCreate(AccessLog:string);
 begin
 ReadList.Add(UniqueVisitors.create);
 

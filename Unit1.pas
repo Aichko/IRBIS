@@ -41,7 +41,7 @@ begin
   if OpenDialog1.Execute then
     AccessLog := OpenDialog1.FileName;
   ViewController1 := ViewController.Create(Self);
-  ViewController1.AllPdfCreate;
+  ViewController1.AllPdfCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsAllPdf;
 end;
 
@@ -55,7 +55,7 @@ begin
   if OpenDialog1.Execute then
     AccessLog := OpenDialog1.FileName;
   ViewController1 := ViewController.Create(Self);
-  ViewController1.TotalRequestsCreate;
+  ViewController1.TotalRequestsCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsTotalRequest;
 end;
 
@@ -71,7 +71,7 @@ begin
   if OpenDialog1.Execute then
     AccessLog := OpenDialog1.FileName;
     ViewController1 := ViewController.Create(Self);
-  ViewController1.UniqueVisitorsCreate;
+  ViewController1.UniqueVisitorsCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueVisitors;
 end;
 

@@ -11,9 +11,9 @@ type
     function getGeneralAnalyzedRequestsTotalRequest: string;
     function getGeneralAnalyzedRequestsAllPdf: string;
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
-    procedure TotalRequestsCreate;
-    procedure AllPdfCreate;
-    procedure UniqueVisitorsCreate;
+    procedure TotalRequestsCreate(AccessLog:string);
+    procedure AllPdfCreate(AccessLog:string);
+    procedure UniqueVisitorsCreate(AcessLog:string);
   end;
 
 implementation

@@ -29,18 +29,18 @@ type
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
-    procedure TotalRequestsCreate;
-    procedure AllPdfCreate;
-    Procedure UniqueVisitorsCreate;
+    procedure TotalRequestsCreate(AccessLog:string);
+    procedure AllPdfCreate(AccessLog:string);
+    Procedure UniqueVisitorsCreate(AccessLog:string);
   End;
 
 implementation
 
 { ViewController }
 
-procedure ViewController.AllPdfCreate;
+procedure ViewController.AllPdfCreate(AccessLog:string);
 begin
-  ModuleController.AllPdfCreate;
+  ModuleController.AllPdfCreate(AccessLog);
 end;
 
 constructor ViewController.create(AOwner: TForm);
@@ -105,15 +105,15 @@ begin
       Result := IntToStr(List.return);
 end;
 
-procedure ViewController.TotalRequestsCreate;
+procedure ViewController.TotalRequestsCreate(AccessLog:string);
 
 begin
-  ModuleController.TotalRequestsCreate;
+  ModuleController.TotalRequestsCreate(AccessLog);
 end;
 
 procedure ViewController.UniqueVisitorsCreate;
 begin
-  ModuleController.UniqueVisitorsCreate;
+  ModuleController.UniqueVisitorsCreate(AccessLog);
 end;
 
 end.
