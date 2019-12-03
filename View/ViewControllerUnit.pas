@@ -26,7 +26,7 @@ type
   public
     function getGeneralAnalyzedRequestsTotalRequest: string;
     function getGeneralAnalyzedRequestsAllPdf: string;
-    function getGeneralAnalyzedReqestsUniqueVisitors: string;
+    function getGeneralAnalyzedRequestsUniqueVisitors: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
     procedure TotalRequestsCreate;
@@ -67,7 +67,7 @@ begin
   Result := AOwner;
 end;
 
-function ViewController.getGeneralAnalyzedReqestsUniqueVisitors: string;
+function ViewController.getGeneralAnalyzedRequestsUniqueVisitors: string;
 var
   List: ReadInterface;
 
