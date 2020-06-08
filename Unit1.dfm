@@ -35,6 +35,10 @@ object Form1: TForm1
         Caption = 'Unique_Visitors'
         OnClick = UniqueVisitors1Click
       end
+      object LogSize1: TMenuItem
+        Caption = 'LogSize'
+        OnClick = LogSize1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

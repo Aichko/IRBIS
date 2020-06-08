@@ -17,10 +17,12 @@ type
     OpenDialog1: TOpenDialog;
     AllPdf1: TMenuItem;
     UniqueVisitors1: TMenuItem;
+    LogSize1: TMenuItem;
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure AllPdf1Click(Sender: TObject);
     procedure UniqueVisitors1Click(Sender: TObject);
+    procedure LogSize1Click(Sender: TObject);
   private
     AccessLog: string;
     /// <link>aggregation</link>
@@ -48,6 +50,15 @@ end;
 function TForm1.getAccessLog: string;
 begin
   Result := AccessLog;
+end;
+
+procedure TForm1.LogSize1Click(Sender: TObject);
+begin
+   if OpenDialog1.Execute then
+    AccessLog := OpenDialog1.FileName;
+  ViewController1 := ViewController.Create(Self);
+  ViewController1.LogSizeCreate(AccessLog);
+  Self.Caption := ViewController1.getGeneralAnalyzedRequestsLogSize;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);

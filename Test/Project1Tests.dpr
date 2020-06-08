@@ -25,7 +25,10 @@ uses
   ModelControllerUnit in '..\Model\ModelControllerUnit.pas',
   ReadInterfaceUnit in '..\Model\ReadInterfaceUnit.pas',
   TotalRequestsUnit in '..\Model\TotalRequestsUnit.pas',
-  ValidRequestsUnit in '..\Model\ValidRequestsUnit.pas';
+  ValidRequestsUnit in '..\Model\ValidRequestsUnit.pas',
+  AllPdfUnit in '..\Model\AllPdfUnit.pas',
+  LogSizeUnit in '..\Model\LogSizeUnit.pas',
+  UniqueVisitorsUnit in '..\Model\UniqueVisitorsUnit.pas';
 
 {R *.RES}
 

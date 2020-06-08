@@ -11,6 +11,7 @@ type
     function getGeneralAnalyzedRequests:  TList<ReadInterface>;
     procedure TotalRequestsCreate(AccessLog:string);
     procedure AllPdfCreate(AccessLog:string);
+    procedure LogSizeCreate(AccessLog:string);
     procedure UniqueVisitorsCreate(AccessLog:string);
   end;
 

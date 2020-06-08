@@ -6,6 +6,7 @@ uses
   System.Generics.Collections {TDictionary} ,
   TotalRequestsUnit,
   AllPdfUnit,
+  LogSizeUnit,
   ReadInterfaceUnit,
   UniqueVisitorsUnit,
   GeneralUnit,
@@ -26,6 +27,7 @@ type
     constructor create;
     procedure TotalRequestsCreate(AccessLog:string);
     procedure AllPdfCreate(AccessLog:string);
+    procedure LogSizeCreate(AccessLog:string);
     procedure UniqueVisitorsCreate(AccessLog:string);
   end;
 
@@ -36,6 +38,15 @@ implementation
 procedure ModelController.AllPdfCreate(AccessLog:string);
 begin
   ReadList.Add(AllPdf.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+procedure ModelController.LogSizeCreate(AccessLog:string);
+begin
+  ReadList.Add(LogSize.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
   GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
