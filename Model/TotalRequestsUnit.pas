@@ -26,7 +26,9 @@ implementation
 
 constructor TotalRequests.create;
 begin
-  Self.count := 0;
+  Self.total := 0;
+  self.count := 0;
+  self.bot := 0;
 end;
 
 function TotalRequests.GetName: string;
@@ -41,7 +43,6 @@ begin
     inc(bot);
   Inc(count);
   total := count - bot;
-
 end;
 
 function TotalRequests.return: integer;

@@ -9,12 +9,13 @@ uses
   LogSizeUnit,
   ReadInterfaceUnit,
   UniqueVisitorsUnit,
+  ValidRequestsUnit,
   GeneralUnit,
   GeneralInterfaceUnit {GeneralInterface} ,
   ModelControllerInterfaceUnit {ModelControllerInterface};
 
-//const
-  //AccessLog = 'irbislog_copy_01.02.2013.log';
+// const
+// AccessLog = 'irbislog_copy_01.02.2013.log';
 
 type
   ModelController = class(TInterfacedObject, ModelControllerInterface)
@@ -25,17 +26,18 @@ type
   public
     function getGeneralAnalyzedRequests: TList<ReadInterface>;
     constructor create;
-    procedure TotalRequestsCreate(AccessLog:string);
-    procedure AllPdfCreate(AccessLog:string);
-    procedure LogSizeCreate(AccessLog:string);
-    procedure UniqueVisitorsCreate(AccessLog:string);
+    procedure TotalRequestsCreate(AccessLog: string);
+    procedure AllPdfCreate(AccessLog: string);
+    procedure LogSizeCreate(AccessLog: string);
+    procedure UniqueVisitorsCreate(AccessLog: string);
+    procedure ValidRequestsCreate(AccessLog: string);
   end;
 
 implementation
 
 { ModelController }
 
-procedure ModelController.AllPdfCreate(AccessLog:string);
+procedure ModelController.AllPdfCreate(AccessLog: string);
 begin
   ReadList.Add(AllPdf.create);
 
@@ -44,7 +46,7 @@ begin
   GeneralInterface1.Read;
 end;
 
-procedure ModelController.LogSizeCreate(AccessLog:string);
+procedure ModelController.LogSizeCreate(AccessLog: string);
 begin
   ReadList.Add(LogSize.create);
 
@@ -53,7 +55,7 @@ begin
   GeneralInterface1.Read;
 end;
 
-procedure ModelController.TotalRequestsCreate(AccessLog:string);
+procedure ModelController.TotalRequestsCreate(AccessLog: string);
 
 begin
   ReadList.Add(TotalRequests.create);
@@ -63,14 +65,24 @@ begin
   GeneralInterface1.Read;
 end;
 
-procedure ModelController.UniqueVIsitorsCreate(AccessLog:string);
+procedure ModelController.UniqueVisitorsCreate(AccessLog: string);
 begin
-ReadList.Add(UniqueVisitors.create);
+  ReadList.Add(UniqueVisitors.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
   GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
   GeneralInterface1.Read;
 end;
+
+procedure ModelController.ValidRequestsCreate(AccessLog: string);
+begin
+  ReadList.Add(ValidRequests.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
 
 constructor ModelController.create;
 

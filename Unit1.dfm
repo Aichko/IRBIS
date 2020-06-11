@@ -39,6 +39,10 @@ object Form1: TForm1
         Caption = 'LogSize'
         OnClick = LogSize1Click
       end
+      object ValidRequests1: TMenuItem
+        Caption = 'ValidRequests'
+        OnClick = ValidRequests1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

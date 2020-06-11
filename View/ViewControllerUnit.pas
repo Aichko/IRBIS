@@ -28,12 +28,14 @@ type
     function getGeneralAnalyzedRequestsAllPdf: string;
     function getGeneralAnalyzedRequestsLogSize: string;
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
+    function getGeneralAnalyzedRequestsValidRequests: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
     procedure TotalRequestsCreate(AccessLog:string);
     procedure AllPdfCreate(AccessLog:string);
     procedure LogSizeCreate(AccessLog:string);
     Procedure UniqueVisitorsCreate(AccessLog:string);
+    Procedure ValidRequestsCreate(AccessLog:string);
   End;
 
 implementation
@@ -48,6 +50,11 @@ end;
 procedure ViewController.LogSizeCreate(AccessLog:string);
 begin
   ModuleController.LogSizeCreate(AccessLog);
+end;
+
+procedure ViewController.ValidRequestsCreate(AccessLog:string);
+begin
+  ModuleController.ValidRequestsCreate(AccessLog);
 end;
 
 constructor ViewController.create(AOwner: TForm);
@@ -124,6 +131,20 @@ begin
   for List in ModuleController.getGeneralAnalyzedRequests do
     if List.GetName = 'TotalRequest' then
       Result := IntToStr(List.return);
+end;
+
+function ViewController.getGeneralAnalyzedRequestsValidRequests: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'ValidRequests' then
+      Result := IntToStr(List.return);
+
 end;
 
 procedure ViewController.TotalRequestsCreate(AccessLog:string);
