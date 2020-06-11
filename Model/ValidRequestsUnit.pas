@@ -29,11 +29,12 @@ begin
   Self.total := 0;
   self.count := 0;
   self.bot := 0;
+  self.err := 0;
 end;
 
 function ValidRequests.GetName: string;
 begin
-  result:=name;
+  Result := name;
 end;
 
 procedure ValidRequests.read(OneLogString: String);

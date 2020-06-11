@@ -29,6 +29,7 @@ type
     function getGeneralAnalyzedRequestsLogSize: string;
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
     function getGeneralAnalyzedRequestsValidRequests: string;
+    function getGeneralAnalyzedRequestsFailedRequest: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
     procedure TotalRequestsCreate(AccessLog:string);
@@ -36,6 +37,7 @@ type
     procedure LogSizeCreate(AccessLog:string);
     Procedure UniqueVisitorsCreate(AccessLog:string);
     Procedure ValidRequestsCreate(AccessLog:string);
+    Procedure failedRequestCreate(AccessLog:string);
   End;
 
 implementation
@@ -147,6 +149,19 @@ begin
 
 end;
 
+function ViewController.getGeneralAnalyzedRequestsFailedRequest: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'FailedRequest' then
+      Result := IntToStr(List.return);
+end;
+
 procedure ViewController.TotalRequestsCreate(AccessLog:string);
 
 begin
@@ -156,6 +171,11 @@ end;
 procedure ViewController.UniqueVisitorsCreate;
 begin
   ModuleController.UniqueVisitorsCreate(AccessLog);
+end;
+
+procedure ViewController.FailedRequestCreate;
+begin
+  ModuleController.FailedRequestCreate(AccessLog);
 end;
 
 end.

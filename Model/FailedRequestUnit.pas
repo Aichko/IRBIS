@@ -2,35 +2,46 @@ unit FailedRequestUnit;
 
 interface
  Uses
-   readinterfaceunit;
+   readinterfaceunit,
+   RegularExpressions;
 type
-  FaikedRequest = Class (TInterfacedObject, ReadInterface)
+  FailedRequest = Class (TInterfacedObject, ReadInterface)
   const
-    name = 'FaikedRequest';
+    name = 'FailedRequest';
   private
+    count, bot, total: integer;
+    reg: TRegEx;
   public
     procedure read(OneLogString:String);
     function return: integer;
     function GetName: string;
+    constructor create;
   End;
 
 implementation
 
 { FaikedRequest }
 
-function FaikedRequest.GetName: string;
+constructor FailedRequest.create;
 begin
-
+  self.count := 0;
 end;
 
-procedure FaikedRequest.read(OneLogString: String);
+function FailedRequest.GetName: string;
 begin
-
+  Result := name;
 end;
 
-function FaikedRequest.return: integer;
+procedure FailedRequest.read(OneLogString: String);
 begin
-  result:=0;
+  reg:=TRegEx.Create('^.*("-" 4)');
+  if reg.IsMatch(OneLogString)then
+    inc(count);
+end;
+
+function FailedRequest.return: integer;
+begin
+  result:=self.count;
 end;
 
 end.

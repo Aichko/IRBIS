@@ -43,6 +43,10 @@ object Form1: TForm1
         Caption = 'ValidRequests'
         OnClick = ValidRequests1Click
       end
+      object FailedRequest1: TMenuItem
+        Caption = 'FailedRequest'
+        OnClick = FailedRequest1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

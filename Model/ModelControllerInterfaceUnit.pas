@@ -14,6 +14,7 @@ type
     procedure LogSizeCreate(AccessLog:string);
     procedure UniqueVisitorsCreate(AccessLog:string);
     procedure ValidRequestsCreate(AccessLog:string);
+    procedure FailedRequestCreate(AccessLog:string);
   end;
 
 implementation
