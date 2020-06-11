@@ -3,14 +3,16 @@ unit TotalRequestsUnit;
 interface
 
 uses
-  ReadInterfaceUnit;
+  ReadInterfaceUnit,
+  RegularExpressions;
 
 type
   TotalRequests = class(TInterfacedObject, ReadInterface)
   const
     name = 'TotalRequest';
   private
-    count: integer;
+    count, bot, total: integer;
+    reg: TRegEx;
   public
     procedure Read(OneLogString: String);
     function return: integer;
@@ -34,12 +36,17 @@ end;
 
 procedure TotalRequests.Read(OneLogString: String);
 begin
+  reg:=TRegEx.Create('^.*(bot)');
+  if reg.IsMatch(OneLogString)then
+    inc(bot);
   Inc(count);
+  total := count - bot;
+
 end;
 
 function TotalRequests.return: integer;
 begin
-  Result := Self.count;
+  Result := Self.total;
 end;
 
 end.

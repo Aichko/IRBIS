@@ -16,7 +16,7 @@ type
     a: integer;
     procedure read(OneLogString: String);
     function return: integer;
-    //function GetFileSize(FileName: string): integer;
+    //function GetFileSize(OneLogString: string): integer;
     function GetName: string;
   end;
 

@@ -16,6 +16,7 @@ uses
   ReadInterfaceUnit,
   ValidRequestsUnit,
   TotalRequestsUnit,
+  Unit1,
   GeneralUnit {General} ,
   GeneralInterfaceUnit {GeneralInterface} ,
   TestFramework, System.SysUtils, Vcl.Graphics, Winapi.Windows, System.Variants,
@@ -37,6 +38,7 @@ type
     // procedure TestGetLogPath;
     procedure TestRead;
     procedure TestCount;
+    procedure TestSize;
   end;
 
 implementation
@@ -91,6 +93,11 @@ var
 begin
   FGeneral1.Read;
   CheckNotNull(FGeneral1);
+end;
+
+procedure TestGeneral.TestSize;
+begin
+  //form1.caption:= inttostr(GetFileSize('C:\WINDOWS\notepad.exe'));
 end;
 
 initialization
