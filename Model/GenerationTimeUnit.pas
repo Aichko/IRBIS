@@ -3,13 +3,16 @@ unit GenerationTimeUnit;
 interface
 
 uses
-  readInterfaceUnit;
+  readInterfaceUnit,
+  System.DateUtils;
 
 type
   GenerationTime = class(TInterfacedObject, ReadInterface)
   const
     name = 'GenerationTime';
   private
+    Start, Stop: TDateTime;
+    Elapsed: int64;
   public
     procedure read(OneLogString: String);
     function return: integer;
@@ -22,17 +25,19 @@ implementation
 
 function GenerationTime.GetName: string;
 begin
-  result:=name;
+  result := name;
 end;
 
 procedure GenerationTime.read(OneLogString: String);
 begin
-
+  Start:= Now; //засекли начало выполнения операции
 end;
 
 function GenerationTime.return: integer;
 begin
-result:= 0;
+  Stop:=Now;  //засекли окончание выполнения операции
+  Elapsed:=SecondsBetween(Start, Stop);//время в секундах
+  result := 0;
 end;
 
 end.

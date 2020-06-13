@@ -47,6 +47,10 @@ object Form1: TForm1
         Caption = 'FailedRequest'
         OnClick = FailedRequest1Click
       end
+      object generationTime1: TMenuItem
+        Caption = 'GenerationTime'
+        OnClick = generationTime1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog

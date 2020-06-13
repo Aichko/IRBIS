@@ -20,6 +20,7 @@ type
     LogSize1: TMenuItem;
     ValidRequests1: TMenuItem;
     FailedRequest1: TMenuItem;
+    generationTime1: TMenuItem;
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure AllPdf1Click(Sender: TObject);
@@ -27,6 +28,7 @@ type
     procedure LogSize1Click(Sender: TObject);
     procedure ValidRequests1Click(Sender: TObject);
     procedure FailedRequest1Click(Sender: TObject);
+    procedure generationTime1Click(Sender: TObject);
   private
     AccessLog: string;
     /// <link>aggregation</link>
@@ -58,6 +60,15 @@ begin
     ViewController1 := ViewController.Create(Self);
   ViewController1.FailedRequestCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsFailedRequest;
+end;
+
+procedure TForm1.generationTime1Click(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+    AccessLog := OpenDialog1.FileName;
+  ViewController1 := ViewController.Create(Self);
+  ViewController1.GenerationTimeCreate(AccessLog);
+  Self.Caption := ViewController1.getGeneralAnalyzedRequestsGenerationTime;
 end;
 
 function TForm1.getAccessLog: string;

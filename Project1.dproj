@@ -144,6 +144,16 @@
 			<None Include="ModelSupport_Project1\AllPdfUnit\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\LogSizeUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\AllPdfUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\ExcludedHitsUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UniqueRefferersUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UniqueVisitorsUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\RegExpr\default.txvpck"/>
+			<None Include="ModelSupport_Project1\ValidRequestsUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\FailedRequestUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UniqueStaticFilesUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UniqueNotFoundUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\BandWidthUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\UniqueFilesUnit\default.txvpck"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

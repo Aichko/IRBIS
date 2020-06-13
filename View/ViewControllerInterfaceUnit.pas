@@ -14,12 +14,14 @@ type
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
     function getGeneralAnalyzedRequestsValidRequests: string;
     function getGeneralAnalyzedRequestsFailedRequest: string;
+    function getGeneralAnalyzedRequestsGenerationTime: string;
     procedure TotalRequestsCreate(AccessLog:string);
     procedure AllPdfCreate(AccessLog:string);
     procedure LogSizeCreate(AccessLog:string);
     procedure UniqueVisitorsCreate(AcessLog:string);
     procedure ValidRequestsCreate(AcessLog:string);
     procedure FailedRequestCreate(AcessLog:string);
+    procedure GenerationTimeCreate(AcessLog:string);
   end;
 
 implementation

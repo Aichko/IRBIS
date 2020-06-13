@@ -15,6 +15,7 @@ type
     procedure UniqueVisitorsCreate(AccessLog:string);
     procedure ValidRequestsCreate(AccessLog:string);
     procedure FailedRequestCreate(AccessLog:string);
+    procedure GenerationTimeCreate(AccessLog:string);
   end;
 
 implementation

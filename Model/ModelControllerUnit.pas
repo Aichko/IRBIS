@@ -11,6 +11,7 @@ uses
   UniqueVisitorsUnit,
   ValidRequestsUnit,
   FailedRequestUnit,
+  GenerationTimeUnit,
   GeneralUnit,
   GeneralInterfaceUnit {GeneralInterface} ,
   ModelControllerInterfaceUnit {ModelControllerInterface};
@@ -33,6 +34,7 @@ type
     procedure UniqueVisitorsCreate(AccessLog: string);
     procedure ValidRequestsCreate(AccessLog: string);
     procedure FailedRequestCreate(AccessLog: string);
+    procedure GenerationTimeCreate(AccessLog: string);
   end;
 
 implementation
@@ -89,6 +91,16 @@ procedure ModelController.FailedRequestCreate(AccessLog: string);
 
 begin
   ReadList.Add(FailedRequest.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+procedure ModelController.GenerationTimeCreate(AccessLog: string);
+
+begin
+  ReadList.Add(GenerationTime.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
   GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);

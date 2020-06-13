@@ -30,6 +30,7 @@ type
     function getGeneralAnalyzedRequestsUniqueVisitors: string;
     function getGeneralAnalyzedRequestsValidRequests: string;
     function getGeneralAnalyzedRequestsFailedRequest: string;
+    function getGeneralAnalyzedRequestsGenerationTime: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
     procedure TotalRequestsCreate(AccessLog:string);
@@ -38,6 +39,7 @@ type
     Procedure UniqueVisitorsCreate(AccessLog:string);
     Procedure ValidRequestsCreate(AccessLog:string);
     Procedure failedRequestCreate(AccessLog:string);
+    Procedure GenerationTimeCreate(AccessLog:string);
   End;
 
 implementation
@@ -162,6 +164,19 @@ begin
       Result := IntToStr(List.return);
 end;
 
+function ViewController.getGeneralAnalyzedRequestsGenerationTime: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'GenerationTime' then
+      Result := IntToStr(List.return);
+end;
+
 procedure ViewController.TotalRequestsCreate(AccessLog:string);
 
 begin
@@ -176,6 +191,11 @@ end;
 procedure ViewController.FailedRequestCreate;
 begin
   ModuleController.FailedRequestCreate(AccessLog);
+end;
+
+procedure ViewController.GenerationTimeCreate;
+begin
+  ModuleController.GenerationTimeCreate(AccessLog);
 end;
 
 end.
