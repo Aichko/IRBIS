@@ -34,7 +34,7 @@ end;
 
 procedure FailedRequest.read(OneLogString: String);
 begin
-  reg:=TRegEx.Create('^.*("-" 4)');
+  reg:=TRegEx.Create('^.*(" 4)|^.*(200 110)');
   if reg.IsMatch(OneLogString)then
     inc(count);
 end;

@@ -40,7 +40,6 @@ begin
     reg:=TRegEx.Create('^.*\.(pdf)');
     if reg.IsMatch(OneLogString)then
       Inc(count);
-
 end;
 
 function AllPdf.return: integer;

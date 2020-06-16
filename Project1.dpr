@@ -18,12 +18,8 @@ uses
   GenerationTimeUnit in 'Model\GenerationTimeUnit.pas',
   UniqueVisitorsUnit in 'Model\UniqueVisitorsUnit.pas',
   UniqueFilesUnit in 'Model\UniqueFilesUnit.pas',
-  ExcludedHitsUnit in 'Model\ExcludedHitsUnit.pas',
-  UniqueRefferersUnit in 'Model\UniqueRefferersUnit.pas',
-  UniqueNotFoundUnit in 'Model\UniqueNotFoundUnit.pas',
   UniqueStaticFilesUnit in 'Model\UniqueStaticFilesUnit.pas',
   LogSizeUnit in 'Model\LogSizeUnit.pas',
-  BandWidthUnit in 'Model\BandWidthUnit.pas',
   GeneralWindowsUnit in 'View\GeneralWindowsUnit.pas',
   AllPdfUnit in 'Model\AllPdfUnit.pas';
 

@@ -9,6 +9,8 @@ uses
   LogSizeUnit,
   ReadInterfaceUnit,
   UniqueVisitorsUnit,
+  UniqueFilesUnit,
+  UniqueStaticFilesUnit,
   ValidRequestsUnit,
   FailedRequestUnit,
   GenerationTimeUnit,
@@ -35,6 +37,8 @@ type
     procedure ValidRequestsCreate(AccessLog: string);
     procedure FailedRequestCreate(AccessLog: string);
     procedure GenerationTimeCreate(AccessLog: string);
+    procedure UniqueFilesCreate(AccessLog: string);
+    procedure UniqueStaticFilesCreate(AccessLog: string);
   end;
 
 implementation
@@ -101,6 +105,26 @@ procedure ModelController.GenerationTimeCreate(AccessLog: string);
 
 begin
   ReadList.Add(GenerationTime.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+procedure ModelController.UniqueFilesCreate(AccessLog: string);
+
+begin
+  ReadList.Add(UniqueFiles.create);
+
+  // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1.Read;
+end;
+
+procedure ModelController.UniqueStaticFilesCreate(AccessLog: string);
+
+begin
+  ReadList.Add(UniqueStaticFiles.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
   GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);

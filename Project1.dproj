@@ -101,12 +101,8 @@
 			<DCCReference Include="Model\GenerationTimeUnit.pas"/>
 			<DCCReference Include="Model\UniqueVisitorsUnit.pas"/>
 			<DCCReference Include="Model\UniqueFilesUnit.pas"/>
-			<DCCReference Include="Model\ExcludedHitsUnit.pas"/>
-			<DCCReference Include="Model\UniqueRefferersUnit.pas"/>
-			<DCCReference Include="Model\UniqueNotFoundUnit.pas"/>
 			<DCCReference Include="Model\UniqueStaticFilesUnit.pas"/>
 			<DCCReference Include="Model\LogSizeUnit.pas"/>
-			<DCCReference Include="Model\BandWidthUnit.pas"/>
 			<DCCReference Include="View\GeneralWindowsUnit.pas"/>
 			<DCCReference Include="Model\AllPdfUnit.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>

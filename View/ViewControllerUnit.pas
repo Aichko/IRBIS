@@ -31,6 +31,8 @@ type
     function getGeneralAnalyzedRequestsValidRequests: string;
     function getGeneralAnalyzedRequestsFailedRequest: string;
     function getGeneralAnalyzedRequestsGenerationTime: string;
+    function getGeneralAnalyzedRequestsUniqueFiles: string;
+    function getGeneralAnalyzedRequestsUniqueStaticFiles: string;
     constructor create(AOwner: TForm);
     Function GetForm: TForm;
     procedure TotalRequestsCreate(AccessLog:string);
@@ -40,6 +42,8 @@ type
     Procedure ValidRequestsCreate(AccessLog:string);
     Procedure failedRequestCreate(AccessLog:string);
     Procedure GenerationTimeCreate(AccessLog:string);
+    Procedure UniqueFilesCreate(AccessLog:string);
+    Procedure UniqueStaticFilesCreate(AccessLog:string);
   End;
 
 implementation
@@ -177,6 +181,32 @@ begin
       Result := IntToStr(List.return);
 end;
 
+function ViewController.getGeneralAnalyzedRequestsUniqueFiles: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'UniqueFiles' then
+      Result := IntToStr(List.return);
+end;
+
+function ViewController.getGeneralAnalyzedRequestsUniqueStaticFiles: string;
+
+var
+
+  List: ReadInterface;
+
+begin
+  Result := '';
+  for List in ModuleController.getGeneralAnalyzedRequests do
+    if List.GetName = 'UniqueStaticFiles' then
+      Result := IntToStr(List.return);
+end;
+
 procedure ViewController.TotalRequestsCreate(AccessLog:string);
 
 begin
@@ -196,6 +226,16 @@ end;
 procedure ViewController.GenerationTimeCreate;
 begin
   ModuleController.GenerationTimeCreate(AccessLog);
+end;
+
+procedure ViewController.UniqueFilesCreate;
+begin
+  ModuleController.UniqueFilesCreate(AccessLog);
+end;
+
+procedure ViewController.UniqueStaticFilesCreate;
+begin
+  ModuleController.UniqueStaticFilesCreate(AccessLog);
 end;
 
 end.

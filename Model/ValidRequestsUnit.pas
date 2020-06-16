@@ -9,10 +9,10 @@ Uses
 type
   ValidRequests = Class(TInterfacedObject, ReadInterface)
   const
-    name = 'ValidRequest';
+    name = 'ValidRequests';
   private
-    count, bot, total, err: integer;
-    reg1, reg2: TRegEx;
+    count, total, err: int64;
+    reg1: TRegEx;
   public
     procedure read(OneLogString: String);
     function return: integer;
@@ -26,10 +26,9 @@ implementation
 
 constructor ValidRequests.create;
 begin
-  Self.total := 0;
   self.count := 0;
-  self.bot := 0;
-  self.err := 0;
+  err := 0;
+  total := 0;
 end;
 
 function ValidRequests.GetName: string;
@@ -39,19 +38,16 @@ end;
 
 procedure ValidRequests.read(OneLogString: String);
 begin
-  reg1:=TRegEx.Create('^.*(bot)');
-  reg2:=TRegEx.Create('^.*("-" 4)');
+  reg1:=TRegEx.Create('^.*(" 4)|^.*(200 110)|^.*(bot)');
   if reg1.IsMatch(OneLogString)then
-    inc(bot);
-  if reg2.IsMatch(OneLogString)then
     inc(err);
-  Inc(count);
-  total := count - bot - err;
+  Inc(total);
+  count := total - err;
 end;
 
 function ValidRequests.return: integer;
 begin
-  return:=self.total;
+  result:=self.count;
 end;
 
 end.

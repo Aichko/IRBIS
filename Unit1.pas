@@ -6,7 +6,7 @@ uses
   ViewControllerUnit {ViewController} ,
   ViewControllerInterfaceUnit {ViewControllerInterface} ,
   Vcl.Forms, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.Menus,
-  Vcl.Dialogs {TForm};
+  Vcl.Dialogs, Vcl.StdCtrls {TForm};
 
 type
   TForm1 = class(TForm)
@@ -21,6 +21,8 @@ type
     ValidRequests1: TMenuItem;
     FailedRequest1: TMenuItem;
     generationTime1: TMenuItem;
+    UniqueFiles1: TMenuItem;
+    UniqueStaticFiles1: TMenuItem;
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure AllPdf1Click(Sender: TObject);
@@ -29,6 +31,8 @@ type
     procedure ValidRequests1Click(Sender: TObject);
     procedure FailedRequest1Click(Sender: TObject);
     procedure generationTime1Click(Sender: TObject);
+    procedure UniqueFiles1Click(Sender: TObject);
+    procedure UniqueStaticFiles1Click(Sender: TObject);
   private
     AccessLog: string;
     /// <link>aggregation</link>
@@ -100,6 +104,24 @@ begin
   Close;
 end;
 
+procedure TForm1.UniqueFiles1Click(Sender: TObject);
+begin
+   if OpenDialog1.Execute then
+    AccessLog := OpenDialog1.FileName;
+    ViewController1 := ViewController.Create(Self);
+  ViewController1.UniqueFilesCreate(AccessLog);
+  Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueFiles;
+end;
+
+procedure TForm1.UniqueStaticFiles1Click(Sender: TObject);
+begin
+  if OpenDialog1.Execute then
+    AccessLog := OpenDialog1.FileName;
+    ViewController1 := ViewController.Create(Self);
+  ViewController1.UniqueStaticFilesCreate(AccessLog);
+  Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueStaticFiles;
+end;
+
 procedure TForm1.UniqueVisitors1Click(Sender: TObject);
 
 begin
@@ -115,7 +137,7 @@ procedure TForm1.ValidRequests1Click(Sender: TObject);
    if OpenDialog1.Execute then
     AccessLog := OpenDialog1.FileName;
     ViewController1 := ViewController.Create(Self);
-  ViewController1.UniqueVisitorsCreate(AccessLog);
+  ViewController1.ValidRequestsCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsValidRequests;
 end;
 

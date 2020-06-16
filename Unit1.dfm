@@ -51,6 +51,14 @@ object Form1: TForm1
         Caption = 'GenerationTime'
         OnClick = generationTime1Click
       end
+      object UniqueFiles1: TMenuItem
+        Caption = 'UniqueFiles'
+        OnClick = UniqueFiles1Click
+      end
+      object UniqueStaticFiles1: TMenuItem
+        Caption = 'UniqueStaticFiles'
+        OnClick = UniqueStaticFiles1Click
+      end
     end
   end
   object OpenDialog1: TOpenDialog
