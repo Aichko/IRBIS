@@ -27,38 +27,6 @@ object Form1: TForm1
         Caption = #1042#1099#1093#1086#1076
         OnClick = N3Click
       end
-      object AllPdf1: TMenuItem
-        Caption = 'All_Pdf'
-        OnClick = AllPdf1Click
-      end
-      object UniqueVisitors1: TMenuItem
-        Caption = 'Unique_Visitors'
-        OnClick = UniqueVisitors1Click
-      end
-      object LogSize1: TMenuItem
-        Caption = 'LogSize'
-        OnClick = LogSize1Click
-      end
-      object ValidRequests1: TMenuItem
-        Caption = 'ValidRequests'
-        OnClick = ValidRequests1Click
-      end
-      object FailedRequest1: TMenuItem
-        Caption = 'FailedRequest'
-        OnClick = FailedRequest1Click
-      end
-      object generationTime1: TMenuItem
-        Caption = 'GenerationTime'
-        OnClick = generationTime1Click
-      end
-      object UniqueFiles1: TMenuItem
-        Caption = 'UniqueFiles'
-        OnClick = UniqueFiles1Click
-      end
-      object UniqueStaticFiles1: TMenuItem
-        Caption = 'UniqueStaticFiles'
-        OnClick = UniqueStaticFiles1Click
-      end
     end
   end
   object OpenDialog1: TOpenDialog

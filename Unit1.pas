@@ -6,7 +6,7 @@ uses
   ViewControllerUnit {ViewController} ,
   ViewControllerInterfaceUnit {ViewControllerInterface} ,
   Vcl.Forms, System.Classes, Vcl.Controls, Vcl.ExtCtrls, Vcl.Menus,
-  Vcl.Dialogs, Vcl.StdCtrls {TForm};
+  Vcl.Dialogs, Vcl.StdCtrls {TForm}, Unit2;
 
 type
   TForm1 = class(TForm)
@@ -15,24 +15,17 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     OpenDialog1: TOpenDialog;
-    AllPdf1: TMenuItem;
-    UniqueVisitors1: TMenuItem;
-    LogSize1: TMenuItem;
-    ValidRequests1: TMenuItem;
-    FailedRequest1: TMenuItem;
-    generationTime1: TMenuItem;
-    UniqueFiles1: TMenuItem;
-    UniqueStaticFiles1: TMenuItem;
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
-    procedure AllPdf1Click(Sender: TObject);
-    procedure UniqueVisitors1Click(Sender: TObject);
-    procedure LogSize1Click(Sender: TObject);
-    procedure ValidRequests1Click(Sender: TObject);
-    procedure FailedRequest1Click(Sender: TObject);
-    procedure generationTime1Click(Sender: TObject);
-    procedure UniqueFiles1Click(Sender: TObject);
-    procedure UniqueStaticFiles1Click(Sender: TObject);
+    procedure AllPdfStart;
+    procedure TotalRequestStart;
+    procedure UniqueVisitorsStart;
+    procedure LogSizeStart;
+    procedure ValidRequestsStart;
+    procedure FailedRequestsStart;
+    procedure GenerationTimeStart;
+    procedure UniqueFilesStart;
+    procedure UniqueStaticFilesStart;
   private
     AccessLog: string;
     /// <link>aggregation</link>
@@ -48,28 +41,22 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.AllPdf1Click(Sender: TObject);
+procedure TForm1.AllPdfStart;
 begin
-  if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
   ViewController1 := ViewController.Create(Self);
   ViewController1.AllPdfCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsAllPdf;
 end;
 
-procedure TForm1.FailedRequest1Click(Sender: TObject);
+procedure TForm1.FailedRequestsStart;
 begin
-  if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
-    ViewController1 := ViewController.Create(Self);
+  ViewController1 := ViewController.Create(Self);
   ViewController1.FailedRequestCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsFailedRequest;
 end;
 
-procedure TForm1.generationTime1Click(Sender: TObject);
+procedure TForm1.generationTimeStart;
 begin
-  if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
   ViewController1 := ViewController.Create(Self);
   ViewController1.GenerationTimeCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsGenerationTime;
@@ -80,10 +67,8 @@ begin
   Result := AccessLog;
 end;
 
-procedure TForm1.LogSize1Click(Sender: TObject);
+procedure TForm1.LogSizeStart;
 begin
-   if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
   ViewController1 := ViewController.Create(Self);
   ViewController1.LogSizeCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsLogSize;
@@ -93,9 +78,28 @@ procedure TForm1.N2Click(Sender: TObject);
 begin
   if OpenDialog1.Execute then
     AccessLog := OpenDialog1.FileName;
-  ViewController1 := ViewController.Create(Self);
-  ViewController1.TotalRequestsCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsTotalRequest;
+  Form2.ShowModal;
+  if Form2.CheckboxTotalRequest.Checked = True then
+    TotalRequestStart;
+  if Form2.CheckboxValidRequests.Checked = True then
+    ValidRequestsStart;
+  if Form2.CheckboxFailedRequests.Checked = True then
+    FailedRequestsStart;
+  if Form2.CheckboxUniqueVisitors.Checked = True then
+    UniqueVisitorsStart;
+  if Form2.CheckboxAllPdf.Checked = True then
+    AllPdfStart;
+  if Form2.CheckboxUniqueFiles.Checked = True then
+    UniqueFilesStart;
+  if Form2.CheckboxUniqueStaticFiles.Checked = True then
+    UniqueStaticFilesStart;
+  if Form2.CheckboxLogSize.Checked = True then
+    LogSizeStart;
+  if Form2.CheckboxGenerationTime.Checked = True then
+    GenerationTimeStart;
+
+
+
 end;
 
 procedure TForm1.N3Click(Sender: TObject);
@@ -104,39 +108,38 @@ begin
   Close;
 end;
 
-procedure TForm1.UniqueFiles1Click(Sender: TObject);
+procedure TForm1.UniqueFilesStart;
 begin
-   if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
-    ViewController1 := ViewController.Create(Self);
+  ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueFilesCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueFiles;
 end;
 
-procedure TForm1.UniqueStaticFiles1Click(Sender: TObject);
+procedure TForm1.TotalRequestStart;
 begin
-  if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
-    ViewController1 := ViewController.Create(Self);
+  ViewController1 := ViewController.Create(Self);
+  ViewController1.TotalRequestsCreate(AccessLog);
+  Self.Caption := ViewController1.getGeneralAnalyzedRequestsTotalRequest;
+end;
+
+procedure TForm1.UniqueStaticFilesStart;
+begin
+  ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueStaticFilesCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueStaticFiles;
 end;
 
-procedure TForm1.UniqueVisitors1Click(Sender: TObject);
+procedure TForm1.UniqueVisitorsStart;
 
 begin
-  if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
-    ViewController1 := ViewController.Create(Self);
+  ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueVisitorsCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueVisitors;
 end;
 
-procedure TForm1.ValidRequests1Click(Sender: TObject);
+procedure TForm1.ValidRequestsStart;
 begin
-   if OpenDialog1.Execute then
-    AccessLog := OpenDialog1.FileName;
-    ViewController1 := ViewController.Create(Self);
+  ViewController1 := ViewController.Create(Self);
   ViewController1.ValidRequestsCreate(AccessLog);
   Self.Caption := ViewController1.getGeneralAnalyzedRequestsValidRequests;
 end;

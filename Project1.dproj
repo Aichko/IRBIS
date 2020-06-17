@@ -105,6 +105,10 @@
 			<DCCReference Include="Model\LogSizeUnit.pas"/>
 			<DCCReference Include="View\GeneralWindowsUnit.pas"/>
 			<DCCReference Include="Model\AllPdfUnit.pas"/>
+			<DCCReference Include="Unit2.pas">
+				<Form>Form2</Form>
+				<FormType>dfm</FormType>
+			</DCCReference>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>

@@ -52,7 +52,7 @@ begin
   begin
     if z = 1 then
       A := reg.Matches(OneLogString, s);
-    B.Item[n].Value := reg.Matches(OneLogString, s);
+    B := reg.Matches(OneLogString, s);
     for i := 0 to count-1 do
       If B.Item[n].Value = A.Item[i].Value then
         inc(t);
