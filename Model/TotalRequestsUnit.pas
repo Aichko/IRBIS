@@ -11,7 +11,7 @@ type
   const
     name = 'TotalRequest';
   private
-    count, bot, total: integer;
+    count: integer;
     reg: TRegEx;
   public
     procedure Read(OneLogString: String);
@@ -26,9 +26,7 @@ implementation
 
 constructor TotalRequests.create;
 begin
-  Self.total := 0;
   self.count := 0;
-  self.bot := 0;
 end;
 
 function TotalRequests.GetName: string;
@@ -38,16 +36,14 @@ end;
 
 procedure TotalRequests.Read(OneLogString: String);
 begin
-  reg:=TRegEx.Create('^.*(bot)');
+  reg:=TRegEx.Create('^.*(GET (\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64.exe(\?)C21COM=F&I21DBN=IBIS&P21DBN=IBIS HTTP(\/)1.1)');
   if reg.IsMatch(OneLogString)then
-    inc(bot);
-  Inc(count);
-  total := count - bot;
+    inc(count);
 end;
 
 function TotalRequests.return: integer;
 begin
-  Result := Self.total;
+  Result := Self.count;
 end;
 
 end.

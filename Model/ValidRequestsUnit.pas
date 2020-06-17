@@ -11,8 +11,8 @@ type
   const
     name = 'ValidRequests';
   private
-    count, total, err: int64;
-    reg1: TRegEx;
+    count, total, bot: int64;
+    reg1, reg2: TRegEx;
   public
     procedure read(OneLogString: String);
     function return: integer;
@@ -26,9 +26,9 @@ implementation
 
 constructor ValidRequests.create;
 begin
-  self.count := 0;
-  err := 0;
-  total := 0;
+  count := 0;
+  bot := 0;
+  self.total := 0;
 end;
 
 function ValidRequests.GetName: string;
@@ -38,16 +38,18 @@ end;
 
 procedure ValidRequests.read(OneLogString: String);
 begin
-  reg1:=TRegEx.Create('^.*(" 4)|^.*(200 110)|^.*(bot)');
-  if reg1.IsMatch(OneLogString)then
-    inc(err);
-  Inc(total);
-  count := total - err;
+  reg1 := TRegEx.create('^.*(GET (\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64.exe(\?)C21COM=F&I21DBN=IBIS&P21DBN=IBIS HTTP(\/)1.1).*(bot)');
+  if reg1.IsMatch(OneLogString) then
+    Inc(bot);
+  reg2:=TRegEx.create('^.*(GET (\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64.exe(\?)C21COM=F&I21DBN=IBIS&P21DBN=IBIS HTTP(\/)1.1)');
+  if reg2.IsMatch(OneLogString) then
+    Inc(count);
+  total:= count - bot;
 end;
 
 function ValidRequests.return: integer;
 begin
-  result:=self.count;
+  Result := self.total;
 end;
 
 end.

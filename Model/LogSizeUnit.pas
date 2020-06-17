@@ -11,46 +11,49 @@ type
   const
     name = 'LogSize';
   private
-
+    count:integer;
   public
-    a: integer;
-    procedure read(OneLogString: String);
+    procedure read(AccessLog: String);
     function return: integer;
-    //function GetFileSize(OneLogString: string): integer;
+    function GetFileSize(AccessLog: string): integer;
     function GetName: string;
+    constructor create;
   end;
 
 implementation
 
-{ UniqueStaticFiles }
+{ LogSizeUnit }
+
+constructor LogSize.create;
+begin
+  Self.count := 0;
+end;
 
 function LogSize.GetName: string;
 begin
   result := name;
 end;
 
-function GetFileSize(OneLogString: string): integer;
+function LogSize.GetFileSize(AccessLog: string): integer;
 var
   FS: TFilestream;
-  a :integer;
 begin
   try
-    FS := TFilestream.Create(OneLogString, fmShareDenyRead);
+    FS := TFileStream.Create(AccessLog, fmOpenReadWrite);
   except
-    a := -1;
+    Result := -1;
   end;
-  if a <> -1 then
-    a := FS.Size;
+  if Result <> -1 then result := FS.Size;
   FS.Free;
 end;
 
-procedure LogSize.read(OneLogString: String);
+procedure LogSize.read(AccessLog: String);
 begin
-   GetFileSize(OneLogString);
+   GetFileSize(AccessLog);
 end;
 
 function LogSize.return: integer;
 begin
-  result := self.a;
+  result := self.count;
 end;
 end.
