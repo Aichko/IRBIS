@@ -12,9 +12,10 @@ type
   const
     name = 'UniqueVisitors';
   private
-    count: integer;
-    date, CurDate: string;
-    reg, regD: TRegEx;
+    count, n, total, z: integer;
+    reg: TRegEx;
+    Options: TRegExOptions;
+    A, B: TMatchCollection;
   public
     procedure read(OneLogString: String);
     function return: integer;
@@ -28,8 +29,9 @@ implementation
 
 constructor UniqueVisitors.create;
 begin
-  self.count := 0;
-  CurDate := '';
+  self.count := 1;
+  self.n := 0;
+  z:=1;
 end;
 
 function UniqueVisitors.GetName: string;
@@ -39,38 +41,36 @@ end;
 
 procedure UniqueVisitors.read(OneLogString: String);
 var
- ip,i,t:integer;
- A : array of string;
+  ip, i, t: integer;
+  s: string;
 label
   gotoStart;
 begin
-  //regD:= TRegEx.Create('\w{3}(\/)\d{4}:');
-  //date:= regD.match;
-  {gotoStart;
-  if Date  = CurDate then
-  begin}
-  //reg := TRegEx.create('\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}');
-  {for i := 1 to count do
-    if reg.IsMatch(OneLogString) = A[i] then
-      Inc(t);
-  if t = 0 then
+  s := '^.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})';
+  reg := TRegEx.create(s);
+  if reg.IsMatch(OneLogString) then
   begin
-    Inc(count);
-    A[i] := reg.Matches;
-  end;
-  t=0;
-  end
-  else
-  begin
-    count := 1;
+    if z = 1 then
+      A := reg.Matches(OneLogString, s);
+    B.Item[n].Value := reg.Matches(OneLogString, s);
+    for i := 0 to count-1 do
+      If B.Item[n].Value = A.Item[i].Value then
+        inc(t);
+    if t = 0 then
+    begin
+      inc(count);
+      A := reg.Matches(OneLogString, s);
+    end;
     t := 0;
-    curDate := date;
-  end;}
+  end;
+  z:=0;
+  inc(n);
+  total := A.count - 1;
 end;
 
 function UniqueVisitors.return: integer;
 begin
-  result := self.count;
+  result := self.total;
 end;
 
 end.
