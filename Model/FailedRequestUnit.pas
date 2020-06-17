@@ -34,7 +34,7 @@ end;
 
 procedure FailedRequest.read(OneLogString: String);
 begin
-  reg:=TRegEx.Create('^.*(" 4)|^.*(200 110)');
+  reg:=TRegEx.Create('^.*(GET (\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64.exe(\?)C21COM=F&I21DBN=IBIS&P21DBN=IBIS HTTP(\/)1.1).*(bot)');
   if reg.IsMatch(OneLogString)then
     inc(count);
 end;
