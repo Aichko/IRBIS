@@ -36,7 +36,7 @@ end;
 
 procedure UniqueFiles.read(OneLogString: String);
 begin
-   reg:=TRegEx.Create('^.*(GET).*(pdf).*(http:(\/)(\/)95(\.)188(\.)96(\.)193(\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64(\.)exe)');
+   reg:=TRegEx.Create('^.*(GET).*(pdf|php|css|jpeg|js|png).*(http:(\/)(\/)95(\.)188(\.)96(\.)193(\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64(\.)exe)');
     if reg.IsMatch(OneLogString)then
       Inc(count);
 end;

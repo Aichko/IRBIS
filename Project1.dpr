@@ -22,7 +22,8 @@ uses
   LogSizeUnit in 'Model\LogSizeUnit.pas',
   GeneralWindowsUnit in 'View\GeneralWindowsUnit.pas',
   AllPdfUnit in 'Model\AllPdfUnit.pas',
-  Unit2 in 'Unit2.pas' {Form2};
+  Unit2 in 'Unit2.pas' {Form2},
+  DateUnit in 'Model\DateUnit.pas';
 
 {$R *.res}
 

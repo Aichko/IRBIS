@@ -46,7 +46,7 @@ var
 label
   gotoStart;
 begin
-  s := '^.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})';
+  s := '^.*(\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}).*(GET (\/)cgi-bin(\/)irbis64r_01(\/)cgiirbis_64.exe(\?)C21COM=F&I21DBN=IBIS&P21DBN=IBIS HTTP(\/)1.1)';
   reg := TRegEx.create(s);
   if reg.IsMatch(OneLogString) then
   begin
@@ -65,7 +65,7 @@ begin
   end;
   z:=0;
   inc(n);
-  total := A.count - 1;
+  total := A.count;
 end;
 
 function UniqueVisitors.return: integer;

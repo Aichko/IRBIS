@@ -27,6 +27,7 @@ type
     /// <link>aggregation</link>
     GeneralInterface1: GeneralInterface;
     ReadList: TList<ReadInterface>;
+    FileName:string;
   public
     function getGeneralAnalyzedRequests: TList<ReadInterface>;
     constructor create;
@@ -50,16 +51,17 @@ begin
   ReadList.Add(AllPdf.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
 procedure ModelController.LogSizeCreate(AccessLog: string);
 begin
-  ReadList.Add(LogSize.create);
+  FileName := AccessLog;
+  ReadList.Add(LogSize.create (FileName));
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, Filename,ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -69,7 +71,7 @@ begin
   ReadList.Add(TotalRequests.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -78,7 +80,7 @@ begin
   ReadList.Add(UniqueVisitors.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -87,7 +89,7 @@ begin
   ReadList.Add(ValidRequests.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1,FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -97,7 +99,7 @@ begin
   ReadList.Add(FailedRequest.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1,FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -107,7 +109,7 @@ begin
   ReadList.Add(GenerationTime.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, Filename, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -117,7 +119,7 @@ begin
   ReadList.Add(UniqueFiles.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, FileName, ReadList);
   GeneralInterface1.Read;
 end;
 
@@ -127,7 +129,7 @@ begin
   ReadList.Add(UniqueStaticFiles.create);
 
   // GeneralInterface1 := General.Create('irbislog_copy_01.02.2013.log', 0, 1, ReadList);
-  GeneralInterface1 := General.create(AccessLog, 0, 1, ReadList);
+  GeneralInterface1 := General.create(AccessLog, 0, 1, FileName, ReadList);
   GeneralInterface1.Read;
 end;
 

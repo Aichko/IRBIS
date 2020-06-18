@@ -21,7 +21,7 @@ type
   public
     function getAnalyzedRequests: TList<ReadInterface>;
     procedure Read;
-    constructor Create(LogPath: string; StartDate, EndDate: TDateTime;
+    constructor Create(LogPath: string; StartDate, EndDate: TDateTime; FileName:string;
       reader: TList<ReadInterface>);
   end;
 
@@ -29,7 +29,7 @@ implementation
 
 { General }
 
-constructor General.Create(LogPath: string; StartDate, EndDate: TDateTime;
+constructor General.Create(LogPath: string; StartDate, EndDate: TDateTime; FileName:string;
   reader: TList<ReadInterface>);
 begin
   Self.LogPath := LogPath;

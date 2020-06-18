@@ -109,6 +109,7 @@
 				<Form>Form2</Form>
 				<FormType>dfm</FormType>
 			</DCCReference>
+			<DCCReference Include="Model\DateUnit.pas"/>
 			<None Include="ModelSupport_Project1\default.txaPackage"/>
 			<None Include="ModelSupport_Project1\default.txvpck"/>
 			<None Include="ModelSupport_Project1\Unit1\default.txvpck"/>
@@ -154,6 +155,8 @@
 			<None Include="ModelSupport_Project1\UniqueNotFoundUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\BandWidthUnit\default.txvpck"/>
 			<None Include="ModelSupport_Project1\UniqueFilesUnit\default.txvpck"/>
+			<None Include="ModelSupport_Project1\Unit2\default.txvpck"/>
+			<None Include="ModelSupport_Project1\DateUnit\default.txvpck"/>
 			<BuildConfiguration Include="Release">
 				<Key>Cfg_2</Key>
 				<CfgParent>Base</CfgParent>

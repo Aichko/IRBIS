@@ -12,20 +12,22 @@ type
     name = 'LogSize';
   private
     count:integer;
+    Filename:string;
   public
     procedure read(AccessLog: String);
     function return: integer;
-    function GetFileSize(AccessLog: string): integer;
+    function GetFileSize(FileName: string): integer;
     function GetName: string;
-    constructor create;
+    constructor create (Filename: string);
   end;
 
 implementation
 
 { LogSizeUnit }
 
-constructor LogSize.create;
+constructor LogSize.create (FileName:string);
 begin
+  Self.FileName:=FileName;
   Self.count := 0;
 end;
 
@@ -34,12 +36,12 @@ begin
   result := name;
 end;
 
-function LogSize.GetFileSize(AccessLog: string): integer;
+function LogSize.GetFileSize(FileName: string): integer;
 var
   FS: TFilestream;
 begin
   try
-    FS := TFileStream.Create(AccessLog, fmOpenReadWrite);
+    FS := TFileStream.Create(FileName, fmOpenReadWrite);
   except
     Result := -1;
   end;
@@ -49,7 +51,7 @@ end;
 
 procedure LogSize.read(AccessLog: String);
 begin
-   GetFileSize(AccessLog);
+   GetFileSize(FileName);
 end;
 
 function LogSize.return: integer;

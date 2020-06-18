@@ -1,5 +1,5 @@
 unit Unit1;
-
+
 interface
 
 uses
@@ -15,6 +15,20 @@ type
     N2: TMenuItem;
     N3: TMenuItem;
     OpenDialog1: TOpenDialog;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    ScrollBox1: TScrollBox;
+    PanelTotalRequest: TPanel;
+    PanelValidRequest: TPanel;
+    PanelFailedrequest: TPanel;
+    PanelUniqueVisitors: TPanel;
+    PanelAllPdf: TPanel;
+    PanelUniqueFiles: TPanel;
+    PanelUniqueStaticFiles: TPanel;
+    PanelGenerationTime: TPanel;
     procedure N2Click(Sender: TObject);
     procedure N3Click(Sender: TObject);
     procedure AllPdfStart;
@@ -45,21 +59,24 @@ procedure TForm1.AllPdfStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.AllPdfCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsAllPdf;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsAllPdf;
+  PanelAllPdf.Caption := ('Скачанных PDF ' + ViewController1.getGeneralAnalyzedRequestsAllPdf);
 end;
 
 procedure TForm1.FailedRequestsStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.FailedRequestCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsFailedRequest;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsFailedRequest;
+  PanelFailedRequest.Caption := ('Не выполненных запросов ' + ViewController1.getGeneralAnalyzedRequestsFailedRequest);
 end;
 
 procedure TForm1.generationTimeStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.GenerationTimeCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsGenerationTime;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsGenerationTime;
+  PanelgenerationTime.Caption := ('Время выполнения ' + ViewController1.getGeneralAnalyzedRequestsGenerationTime + ' сек.');
 end;
 
 function TForm1.getAccessLog: string;
@@ -71,7 +88,7 @@ procedure TForm1.LogSizeStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.LogSizeCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsLogSize;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsLogSize;
 end;
 
 procedure TForm1.N2Click(Sender: TObject);
@@ -80,25 +97,49 @@ begin
     AccessLog := OpenDialog1.FileName;
   Form2.ShowModal;
   if Form2.CheckboxTotalRequest.Checked = True then
+  begin
     TotalRequestStart;
+    PanelTotalRequest.Visible := True;
+  end;
   if Form2.CheckboxValidRequests.Checked = True then
+  begin
     ValidRequestsStart;
+    PanelValidRequest.Visible := True;
+  end;
   if Form2.CheckboxFailedRequests.Checked = True then
+  begin
     FailedRequestsStart;
+    PanelFailedRequest.Visible := True;
+  end;
   if Form2.CheckboxUniqueVisitors.Checked = True then
-    UniqueVisitorsStart;
+  begin
+     UniqueVisitorsStart;
+     PanelUniqueVisitors.Visible := True;
+  End;
   if Form2.CheckboxAllPdf.Checked = True then
-    AllPdfStart;
+  begin
+     AllPdfStart;
+     PanelAllPdf.Visible := True;
+  end;
   if Form2.CheckboxUniqueFiles.Checked = True then
-    UniqueFilesStart;
+  begin
+     UniqueFilesStart;
+     PanelUniqueFiles.Visible := True;
+  end;
   if Form2.CheckboxUniqueStaticFiles.Checked = True then
-    UniqueStaticFilesStart;
+  begin
+     UniqueStaticFilesStart;
+     PanelUniqueStaticFiles.Visible := True;
+  end;
   if Form2.CheckboxLogSize.Checked = True then
-    LogSizeStart;
+  begin
+     LogSizeStart;
+  end;
   if Form2.CheckboxGenerationTime.Checked = True then
-    GenerationTimeStart;
-
-
+  begin
+     GenerationTimeStart;
+     PanelGenerationTime.Visible := True;
+  end;
 
 end;
 
@@ -112,21 +153,24 @@ procedure TForm1.UniqueFilesStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueFilesCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueFiles;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueFiles;
+  PanelUniqueFiles.Caption := ('Скачано уникальных файлов ' + ViewController1.getGeneralAnalyzedRequestsUniqueFiles);
 end;
 
 procedure TForm1.TotalRequestStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.TotalRequestsCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsTotalRequest;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsTotalRequest;
+  PanelTotalRequest.Caption := ('Всего запросов ' + ViewController1.getGeneralAnalyzedRequestsTotalRequest);
 end;
 
 procedure TForm1.UniqueStaticFilesStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueStaticFilesCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueStaticFiles;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueStaticFiles;
+  PanelUniqueStaticFiles.Caption := ('Всего запросов ' + ViewController1.getGeneralAnalyzedRequestsUniqueStaticFiles);
 end;
 
 procedure TForm1.UniqueVisitorsStart;
@@ -134,14 +178,16 @@ procedure TForm1.UniqueVisitorsStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.UniqueVisitorsCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueVisitors;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsUniqueVisitors;
+  PanelUniqueVisitors.Caption := ('Уникальных посетителей ' + ViewController1.getGeneralAnalyzedRequestsUniqueVisitors);
 end;
 
 procedure TForm1.ValidRequestsStart;
 begin
   ViewController1 := ViewController.Create(Self);
   ViewController1.ValidRequestsCreate(AccessLog);
-  Self.Caption := ViewController1.getGeneralAnalyzedRequestsValidRequests;
+  //Self.Caption := ViewController1.getGeneralAnalyzedRequestsValidRequests;
+  PanelUniqueStaticFiles.Caption := ('Выполненных запросов ' + ViewController1.getGeneralAnalyzedRequestsValidRequests);
 end;
 
 end.

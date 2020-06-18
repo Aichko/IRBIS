@@ -9,7 +9,7 @@ type
   const
     name = 'FailedRequest';
   private
-    count, bot, total: integer;
+    count : integer;
     reg: TRegEx;
   public
     procedure read(OneLogString:String);
